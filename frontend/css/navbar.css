@@ -1,0 +1,125 @@
+#navbar{
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: aliceblue;
+    box-shadow: 0px 5px 10px 0px rgba(27, 72, 207, 0.2);
+    z-index: 100;
+    display: inline-flex;
+    flex-direction: row;
+    height: 50px;
+    padding: 10px;
+}
+
+.container {
+    display: grid;              /* This makes the container a grid container */
+    grid-template-columns: 1cm 1cm; /* This defines two columns of equal size */
+    align-items: center;        /* This aligns the children vertically in the middle */
+    column-gap: 20px;
+}
+#logo_img{
+    max-width: 400%;
+    max-height: 50%;
+}
+.logo{
+    font-weight: bold;
+    color: #646cff;
+    font-size: 25px;
+    text-decoration: dashed;
+}
+
+.navbar-right  {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: absolute;              
+    right: 40px;
+}
+
+#navbar-logout-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#navbar-logout-button:hover {
+    background-color: #0056b3;
+}
+
+.navbar-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: left; 
+    gap: 50px; 
+    margin-inline: auto;
+    margin-left: auto;
+    align-items: center;
+    max-width: 30%;
+}
+
+#searchbar{
+    width: 300px;
+    height: 20px;
+    border: 1px solid blue;
+    display: flex;
+}
+
+.link{
+    color: #646cff;
+    text-decoration: none;
+}
+
+.link:hover{
+    color: #535bf2;
+    text-decoration: underline;
+}
+
+.link-notification {
+    color: red;
+    text-decoration: none;
+}
+
+.link-notification:hover {
+    text-decoration: underline;
+}
+
+
+
+/* try */
+/* link styling for 'Acebook logo'*/
+a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit the color from the parent element */
+}
+  /* Specific styling for your link */
+a .logo {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit the color from the parent element */
+}
+
+  /* Link hover state */
+a:hover .logo {
+    text-decoration: underline; Underline on hover if needed
+    color: inherit; /* Inherit the color from the parent element */
+}
+
+  /* Link active state */
+a:active .logo {
+    text-decoration: underline; /* Underline on click if needed */
+    color: inherit; /* Inherit the color from the parent element */
+}
+
+  /* Link visited state */
+a:visited .logo {
+    text-decoration: underline; /* Underline if needed */
+    color: inherit; /* Inherit the color from the parent element */
+}
+

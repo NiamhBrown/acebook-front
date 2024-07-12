@@ -1,0 +1,231 @@
+/* main post section */
+.post {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 98%);
+    width: 1000px;
+}
+
+.post-header {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.post-header img {
+    width: 55px; /* Adjust the size as needed */
+    height: 55px; /* Adjust the size as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc; /* Optional: Add a border */
+}
+
+.username-handle{
+    margin-left: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.username-hyperlink{
+    color: black;
+    text-decoration: none;
+
+}
+.username-hyperlink:hover{
+    text-decoration: underline;
+
+}
+.timestamp {
+    margin-left: auto; /* This pushes the timestamp to the right */
+    margin-top: 19.2px;
+    margin-bottom: 19.2px;
+    font-weight: lighter;
+}
+
+/* SubmitPost */
+textarea {
+    width: 100%;
+    height: 100px; /* Initial height */
+    max-width: 980px; /* Maximum width */
+    max-height: 65px; /* Maximum height */
+    resize: none; /* Allow both horizontal and vertical resizing */
+    border-radius: 10px;
+    padding:10px
+}
+
+.post-content {
+    padding: 10px;
+    margin: 10px 0px;
+} 
+
+.like-count {
+    display: inline;
+}
+
+/* comment section */
+.comment{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.comment-header {
+    display: flex;
+}
+
+.comment-header img {
+    width: 45px; /* Adjust the size as needed */
+    height: 45px; /* Adjust the size as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc; /* Optional: Add a border */
+}
+
+.comment-username-handle{
+    margin-left: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.comment-timestamp {
+    margin-left: auto; /* This pushes the timestamp to the right */
+    margin-top: 19.2px;
+    margin-bottom: 19.2px;
+    font-weight: lighter;
+}
+
+.comment-content {
+    padding: 10px;;
+} 
+
+.comment-like-count {
+    display: inline;
+}
+
+.single-comment {
+    background-color: lightgrey;
+    border-radius: 10px;
+    width: 800px;
+    padding: 10px;
+}
+
+
+.comment-body {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px; /* Adjust spacing between ProfilePicture and single-comment */
+    }
+
+.comment-like-section {
+        display: flex;
+        justify-content: flex-end; /* Align items to the right */
+        align-items: center; /* Center items vertically */
+        gap: 10px; /* Optional: Add space between items */
+        width: 880px;
+    }
+
+/* profile page */
+.profile-header{
+    text-align: center;
+
+}
+.profile-header img {
+    width: 300px; /* Adjust the size as needed */
+    height: 300px; /* Adjust the size as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc; /* Optional: Add a border */
+
+}
+
+/* friend's page */
+.single-friend img{
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc; /* Optional: Add a border */
+
+}
+
+.single-friend {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Optional: Center align items */
+    gap: 20px; /* Optional: Add space between items */
+    margin: 20px;
+}
+
+/* Friends page */
+.friends-container{
+    width:1000px;
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    grid-gap: 45px 100px;
+    padding: 20px;
+
+}
+
+/* Request */
+.request{
+align-items: center;
+grid-template-columns: 8% 50% 20%;
+grid-gap: 45px 100px;
+padding: 20px;
+background-color: rgb(226, 222, 222);
+border-radius: 14px;
+margin-top: 20px;
+display: grid;
+}
+.request img{
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc; /* Optional: Add a border */
+    
+    }
+
+
+.requests-container{
+    width: 1000px;
+    column-gap: 10px;
+    row-gap: 10px;
+    justify-content: center;
+
+}
+
+.approve-button-container{
+    text-align: left;
+}
+
+
+/* login-page and signup page */
+.login-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.login-form {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-start; /* Align items to the left */
+    gap: 2px
+}
+
+.login-form label {
+    margin-bottom: 5px; /* Optional: Space below labels */
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="submit"] {
+    width: 100%; /* Make inputs take full width */
+    padding: 8px; /* Add padding for better appearance */
+    margin-bottom: 10px; /* Space below inputs */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+

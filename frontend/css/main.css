@@ -1,0 +1,44 @@
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+.heading {
+    text-align: center;
+}
+
+.primary-button, .like-button, .comment-like-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.primary-button:hover, .like-button:hover, .comment-like-button:hover {
+    background-color: #0056b3;
+}
+
+.like-button, .comment-like-button {
+    font-size: 25px;
+    padding: 0px 5px;
+
+}
+
+.submit-post-section{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hyperlink {
+    color: #0056b3;
+    text-decoration: none;
+
+}
+
+.hyperlink:hover {
+    text-decoration: underline;
+}

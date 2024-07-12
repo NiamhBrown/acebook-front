@@ -1,0 +1,64 @@
+.home {
+  height: 100vh; /* Ensure it covers the full height of the viewport */
+  width: 100vw;  
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+  background-image: url('../../assets/mount.png');
+  background-size: cover; /* Ensures the background image covers the entire page */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Keeps the background image fixed */ 
+}
+
+/* .logo_img {
+  margin: 0;
+  display: flex;
+  min-width: 350px;
+  min-height: 120vh;
+} */
+/* body{
+  background-image: url('../../assets/mount.png');
+  height:inherit;
+  width:inherit;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  min-height: 100%;
+  width: 100%;
+
+} */
+
+
+.content {
+  /* position: absolute; */
+  /* top: 56%; 
+  left: 51%;  */
+  /* transform: translate(-50%, -50%); 
+  color: white; 
+  background-color: rgba(0, 0, 0, 0); 
+  padding: 20px; 
+  border-radius: 10px; 
+  width: 80%; 
+  max-width: 500px;  */
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Offset the element by its own dimensions to ensure true centering */
+  color: white; 
+  background-color: rgba(0, 0, 0, 0); /* Fully transparent background */
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.signup-link {
+  display: block; 
+  margin: 10px 0; 
+  text-decoration: none; 
+  color: white; 
+  font-size: 20px; 
+}
