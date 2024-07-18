@@ -81,7 +81,7 @@ export const Profile = () => {
       <Navbar />
       <main className="profile-main">
         <div className="profile-header">
-          <ProfilePicture userId={userId} />
+          <ProfilePicture userId={userId} signedInUser={signedInUser} />
           <div className="modal">
             <button onClick={openModal}>Edit Profile</button>
             <Modal
