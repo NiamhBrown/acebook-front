@@ -68,7 +68,6 @@ export const Profile = () => {
       console.log("User updated:", updatedUser);
       const token = localStorage.getItem("token");
       const updatedUserData = await updateUser(updatedUser, token);
-      console.log("[[[[[[[[[[FRONT END updatedUserData:", updatedUserData);
       setSignedInUser(updatedUserData);
       closeModal();
     } catch (error) {
@@ -81,7 +80,7 @@ export const Profile = () => {
       <Navbar />
       <main className="profile-main">
         <div className="profile-header">
-          <ProfilePicture userId={userId} signedInUser={signedInUser} />
+          <ProfilePicture signedInUser={signedInUser} />
           <div className="modal">
             <button onClick={openModal}>Edit Profile</button>
             <Modal

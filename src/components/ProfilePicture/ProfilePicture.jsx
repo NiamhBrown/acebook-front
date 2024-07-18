@@ -1,7 +1,7 @@
 import "../../../css/main.css";
 import defaultProfilePicture from "../../assets/default_picture.png";
 
-export const ProfilePicture = ({ userId, signedInUser }) => {
+export const ProfilePicture = ({signedInUser }) => {
   const bucketBaseUrl =
     "https://my-acebook-bucket.s3.eu-north-1.amazonaws.com/";
   const profilePictureKey = signedInUser.profilePicture;
