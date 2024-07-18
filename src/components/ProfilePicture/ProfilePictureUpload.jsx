@@ -20,7 +20,7 @@ const ProfilePictureUpload = ({ token, onUpload }) => {
       onUpload(profilePicture);
       setIsFormVisible(false);
     } catch (err) {
-      console("Error uploading profile picture:", err);
+      console.error("Error uploading profile picture:", err);
     }
   };
 
