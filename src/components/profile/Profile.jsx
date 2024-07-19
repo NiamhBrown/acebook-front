@@ -6,7 +6,7 @@ import { updateUser } from "../../services/users";
 import Post from "../Post/Post";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
 import Navbar from "../../components/navbar/navbar";
-import { getOneUser } from "../../services/users";
+import { getSignedInUser } from "../../services/users";
 import FriendsPage from "../../pages/Friend/FriendsPage";
 import EditProfileForm from "./EditProfileForm";
 
@@ -38,11 +38,9 @@ export const Profile = () => {
 
   useEffect(() => {
     if (token) {
-      getOneUser(token)
+      getSignedInUser(token)
         .then((data) => {
-          console.log("HEEEY-data.user[0]", data.user[0]);
           setSignedInUser(data.user[0]);
-
           localStorage.setItem("token", data.token);
         })
         .catch((err) => {
@@ -80,7 +78,7 @@ export const Profile = () => {
       <Navbar />
       <main className="profile-main">
         <div className="profile-header">
-          <ProfilePicture signedInUser={signedInUser} />
+          <ProfilePicture userId ={userId}/>
           <div className="modal">
             <button onClick={openModal}>Edit Profile</button>
             <Modal

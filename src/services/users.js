@@ -18,7 +18,7 @@ export const getAllUsers = async (token) => {
   return data;
 };
 
-export const getOneUser = async (token) => {
+export const getSignedInUser = async (token) => {
   const requestOptions = {
     method: "GET",
     headers: {
@@ -27,7 +27,7 @@ export const getOneUser = async (token) => {
   };
 
   const response = await fetch(
-    `${BACKEND_URL}/users/getOneUser`,
+    `${BACKEND_URL}/users/getSignedInUser`,
     requestOptions
   );
 
@@ -38,6 +38,28 @@ export const getOneUser = async (token) => {
   const data = await response.json();
   return data;
 };
+
+export const getUser = async (userId, token) => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  };
+
+  const response = await fetch(
+    `${BACKEND_URL}/users/getUser?userId=${userId}`,
+    requestOptions
+  );
+
+  if (response.status !== 200) {
+    throw new Error("Unable to fetch users");
+  }
+
+  const data = await response.json();
+  return data;
+};
+
 
 export const updateUser = async (updatedUser, token) => {
   const payload = {
