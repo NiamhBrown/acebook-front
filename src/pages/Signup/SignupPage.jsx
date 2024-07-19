@@ -20,7 +20,6 @@ export const SignupPage = () => {
 });
 
   const handleSubmit = async (event) => {
-    alert("pressed!")
     event.preventDefault();
     if (errors.password.length === 0){
     try {

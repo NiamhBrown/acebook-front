@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/authentication";
-import "../../../css/post.css"
-import "../../../css/main.css"
+import "../../../css/post.css";
+import "../../../css/main.css";
+import { set } from "date-fns/set";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -18,7 +20,7 @@ export const LoginPage = () => {
       navigate("/posts");
     } catch (err) {
       console.error(err);
-      navigate("/login");
+      setError("Incorrect email or password");
     }
   };
 
@@ -50,10 +52,24 @@ export const LoginPage = () => {
           value={password}
           onChange={handlePasswordChange}
         />
-        <input className="login-button" role="submit-button" id="submit" type="submit" value="Submit" />
+
+        {error && <p>{error}</p>}
+
+        <input
+          className="login-button"
+          role="submit-button"
+          id="submit"
+          type="submit"
+          value="Submit"
+        />
       </form>
       <div>
-        <span>Don't have an account? <a className="hyperlink" href="/signup">Sign up</a></span>
+        <span>
+          Don't have an account?{" "}
+          <a className="hyperlink" href="/signup">
+            Sign up
+          </a>
+        </span>
       </div>
     </>
   );
