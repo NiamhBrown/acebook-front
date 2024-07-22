@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { signup } from "../../services/authentication";
-import { se } from "date-fns/locale";
+import { checkEmailAvailability } from "../../services/users";
 
 export const SignupPage = () => {
   const [forename, setForename] = useState("");
@@ -18,7 +17,6 @@ export const SignupPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //try no length for both 
     if (errors.password.length === 0 && errors.email === "") {
       try {
         await signup(forename, surname, username, email, password);
@@ -26,35 +24,36 @@ export const SignupPage = () => {
         navigate("/login");
       } catch (err) {
         console.error(err);
-        navigate("/signup"); //do i need this?
+        // navigate("/signup");
       }
     }
   };
 
-useEffect(() => {
-  const validateEmail = async () => {
-    if (email) {
-      try {
-        const isAvailable = await checkEmailAvailability(email);
-        if (!isAvailable) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            email: "Email already in use",
-          }));
-        } 
-        //else ensures that the err msg is reset if the email changes to be availiable 
-        else {
-          setErrors((prevErrors) => ({ ...prevErrors, email: "" }));
+  useEffect(() => {
+    const validateEmail = async () => {
+      if (email) {
+        try {
+          const isAvailable = await checkEmailAvailability(email);
+          console.log("isAvailable = ", isAvailable);
+
+          if (!isAvailable) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              email: "Email already in use",
+            }));
+          }
+          //else ensures that the err msg is reset if the email changes to be availiable
+          else {
+            setErrors((prevErrors) => ({ ...prevErrors, email: "" }));
+          }
+        } catch (err) {
+          console.error("Error checking email availability", err);
         }
-      } catch (err) {
-        console.error("Error checking email availability", err);
       }
-    }
-  };
+    };
 
-  validateEmail();
-}, [email]);
-
+    validateEmail();
+  }, [email]);
 
   useEffect(() => {
     const capitalLetterRegex = /[A-Z]/;
@@ -89,13 +88,13 @@ useEffect(() => {
       }));
     };
 
-    validatePassword(); //call function explicitly to execute
+    validatePassword();
   }, [password]);
 
   const handleInputChange = (setter) => (event) => {
     setter(event.target.value);
   };
-
+  console.log("errors.email=", errors.email);
   return (
     <>
       <h1 className="heading">Acebook</h1>
@@ -126,6 +125,7 @@ useEffect(() => {
           autoComplete="off"
           onChange={handleInputChange(setUsername)}
         />
+        {errors.email && <p className="email-err">{errors.email}</p>}
         <label htmlFor="email">Email:</label>
         <input
           id="email"

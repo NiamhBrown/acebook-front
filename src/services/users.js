@@ -1,11 +1,11 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export const checkEmailAvailability = async (token, email) => {
-  const payload = { token: token, email: email };
+export const checkEmailAvailability = async (email) => {
+  const payload = { email: email };
   const requestOptions = {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
   };
@@ -19,7 +19,7 @@ export const checkEmailAvailability = async (token, email) => {
   }
 
   const data = await response.json();
-  return data;
+  return data.available;
 };
 
 export const getAllUsers = async (token) => {
