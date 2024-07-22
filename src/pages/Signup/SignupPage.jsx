@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { signup } from "../../services/authentication";
+import { checkEmailAvailability } from "../../services/users";
 
 export const SignupPage = () => {
   const [forename, setForename] = useState("");
@@ -11,38 +11,61 @@ export const SignupPage = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [errors, setErrors] = useState({
-    username: "",
-    password: [
-      "Password must be at least 8 characters.",
-      "Password must have at least one capital letter.",
-      "Password must contain a special character."
-    ],
-});
+    email: "",
+    password: [],
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (errors.password.length === 0){
-    try {
-      await signup(forename, surname, username, email, password);
-      console.log("redirecting...:");
-      navigate("/login");
-    } catch (err) {
-      console.error(err);
-      navigate("/signup");
-    }}
+    if (errors.password.length === 0 && errors.email === "") {
+      try {
+        await signup(forename, surname, username, email, password);
+        console.log("redirecting...:");
+        navigate("/login");
+      } catch (err) {
+        console.error(err);
+        // navigate("/signup");
+      }
+    }
   };
+
+  useEffect(() => {
+    const validateEmail = async () => {
+      if (email) {
+        try {
+          const isAvailable = await checkEmailAvailability(email);
+          console.log("isAvailable = ", isAvailable);
+
+          if (!isAvailable) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              email: "Email already in use",
+            }));
+          }
+          //else ensures that the err msg is reset if the email changes to be availiable
+          else {
+            setErrors((prevErrors) => ({ ...prevErrors, email: "" }));
+          }
+        } catch (err) {
+          console.error("Error checking email availability", err);
+        }
+      }
+    };
+
+    validateEmail();
+  }, [email]);
 
   useEffect(() => {
     const capitalLetterRegex = /[A-Z]/;
     const specialCharacterRegex = /[!@#$%^&*(),.?":{}|<>]/;
-  
+
     const validatePassword = () => {
       let updatedErrors = [
         "Password must be at least 8 characters.",
         "Password must have at least one capital letter.",
-        "Password must contain a special character."
+        "Password must contain a special character.",
       ];
-  
+
       if (password.length >= 8) {
         updatedErrors = updatedErrors.filter(
           (error) => error !== "Password must be at least 8 characters."
@@ -64,80 +87,86 @@ export const SignupPage = () => {
         password: updatedErrors,
       }));
     };
-  
-    validatePassword(); //call function explicitly to execute
 
+    validatePassword();
   }, [password]);
-  
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+
+  const handleInputChange = (setter) => (event) => {
+    setter(event.target.value);
   };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-
-
+  console.log("errors.email=", errors.email);
   return (
     <>
       <h1 className="heading">Acebook</h1>
       <h2>Signup</h2>
       <form className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="forename">Forename:</label>
+        <label htmlFor="forename">Forename</label>
         <input
           id="forename"
           type="text"
           value={forename} //creates a controlled input component, no longer managed by browser's DOM
           autoComplete="off"
-          onChange={(event) => setForename(event.target.value)}
+          onChange={handleInputChange(setForename)}
         />
 
-        <label htmlFor="surname">Surname:</label>
+        <label htmlFor="surname">Surname</label>
         <input
           id="surname"
           type="text"
           value={surname}
           autoComplete="off"
-          onChange={(event) => setSurname(event.target.value)}
+          onChange={handleInputChange(setSurname)}
         />
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username">Username</label>
         <input
           id="username"
           type="text"
           value={username}
           autoComplete="off"
-          onChange={(event) => setUsername(event.target.value)}
+          onChange={handleInputChange(setUsername)}
         />
-        <label htmlFor="email">Email:</label>
+
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           type="text"
           value={email}
           autoComplete="off"
-          onChange={handleEmailChange}
+          onChange={handleInputChange(setEmail)}
         />
-        <label htmlFor="password">Password:</label>
+        {errors.email && <p className="email-err">{errors.email}</p>}
+        <label htmlFor="password">Password</label>
         <input
           placeholder="Password"
           id="password"
           type="password"
           value={password}
-          onChange={handlePasswordChange}
-          />
+          onChange={handleInputChange(setPassword)}
+        />
 
-      {errors.password.length > 0 && (
-        <ul>
-          {errors.password.map((error, index) => (
-            <li key={index}>{error}</li>
-          ))}
-        </ul>
-      )}
+        {errors.password.length > 0 && (
+          <ul className="password-err">
+            {errors.password.map((error, index) => (
+              <li key={index}>{error}</li>
+            ))}
+          </ul>
+        )}
 
-      <input className="login-button" role="submit-button" id="submit" type="submit" value="Submit" />
+        <input
+          className="login-button"
+          role="submit-button"
+          id="submit"
+          type="submit"
+          value="Submit"
+        />
       </form>
       <div>
-      <span>Already have an account? <a className="hyperlink" href="/login">Log in</a></span>
+        <span>
+          Already have an account?{" "}
+          <a className="hyperlink" href="/login">
+            Log in
+          </a>
+        </span>
       </div>
     </>
   );

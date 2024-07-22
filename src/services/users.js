@@ -1,5 +1,27 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
+export const checkEmailAvailability = async (email) => {
+  const payload = { email: email };
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  };
+
+  let response = await fetch(
+    `${BACKEND_URL}/users/check-email`,
+    requestOptions
+  );
+  if (response.status !== 200) {
+    throw new Error("Email check failed");
+  }
+
+  const data = await response.json();
+  return data.available;
+};
+
 export const getAllUsers = async (token) => {
   const requestOptions = {
     method: "GET",
@@ -44,7 +66,7 @@ export const getUser = async (userId, token) => {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
-    }
+    },
   };
 
   const response = await fetch(
@@ -59,7 +81,6 @@ export const getUser = async (userId, token) => {
   const data = await response.json();
   return data;
 };
-
 
 export const updateUser = async (updatedUser, token) => {
   const payload = {
@@ -135,30 +156,6 @@ export const removeFriend = async (token, friendUserId) => {
   }
 };
 
-//this works 
-// export const uploadProfilePicture = async (token, file) => {
-//   const formData = new FormData();
-//   formData.append("profilePicture", file);
-
-//   const requestOptions = {
-//     method: "POST",
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//     body: formData,
-//   };
-
-//   const response = await fetch(
-//     `${BACKEND_URL}/users/profilePicture`,
-//     requestOptions
-//   );
-//   if (response.status !== 200) {
-//     throw new Error("Unable to add profile picture");
-//   } else {
-//     return await response.json();
-//   }
-// };
-
 export const uploadProfilePicture = async (token, file) => {
   const formData = new FormData();
   formData.append("file", file); //"file" must match the beckend key, which is "file"
@@ -171,10 +168,7 @@ export const uploadProfilePicture = async (token, file) => {
     body: formData,
   };
 
-  const response = await fetch(
-    `${BACKEND_URL}/users/upload`,
-    requestOptions
-  );
+  const response = await fetch(`${BACKEND_URL}/users/upload`, requestOptions);
   if (response.status !== 200) {
     throw new Error("Unable to add profile picture");
   } else {
