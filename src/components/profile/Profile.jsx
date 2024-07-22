@@ -80,7 +80,9 @@ export const Profile = () => {
         <div className="profile-header">
           <ProfilePicture userId={userId} />
           <div className="modal">
-            <button onClick={openModal}>Edit Profile</button>
+            <button className="edit-profile-btn" onClick={openModal}>
+              Edit Profile
+            </button>
             <Modal
               isOpen={modalIsOpen}
               onRequestClose={closeModal}
@@ -97,15 +99,15 @@ export const Profile = () => {
             </Modal>
           </div>
 
-          <h1>
+          <h1 className="profile-name">
             {signedInUser.forename} {signedInUser.surname}
           </h1>
-          <p>Gender: {signedInUser.gender}</p>
-          <p>Location: {signedInUser.location}</p>
         </div>
 
-        <div className="profile-container" role="profile">
-          <h2>Posts</h2>
+        <div className="profile-container">
+          <h2>
+            Posts <span className="number">({posts.length})</span>
+          </h2>
           {posts.length > 0 ? (
             <>
               {posts.map((post) => (
