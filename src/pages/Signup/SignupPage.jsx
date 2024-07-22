@@ -100,7 +100,7 @@ export const SignupPage = () => {
       <h1 className="heading">Acebook</h1>
       <h2>Signup</h2>
       <form className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="forename">Forename:</label>
+        <label htmlFor="forename">Forename</label>
         <input
           id="forename"
           type="text"
@@ -109,7 +109,7 @@ export const SignupPage = () => {
           onChange={handleInputChange(setForename)}
         />
 
-        <label htmlFor="surname">Surname:</label>
+        <label htmlFor="surname">Surname</label>
         <input
           id="surname"
           type="text"
@@ -117,7 +117,7 @@ export const SignupPage = () => {
           autoComplete="off"
           onChange={handleInputChange(setSurname)}
         />
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username">Username</label>
         <input
           id="username"
           type="text"
@@ -125,8 +125,8 @@ export const SignupPage = () => {
           autoComplete="off"
           onChange={handleInputChange(setUsername)}
         />
-        {errors.email && <p className="email-err">{errors.email}</p>}
-        <label htmlFor="email">Email:</label>
+
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           type="text"
@@ -134,7 +134,8 @@ export const SignupPage = () => {
           autoComplete="off"
           onChange={handleInputChange(setEmail)}
         />
-        <label htmlFor="password">Password:</label>
+        {errors.email && <p className="email-err">{errors.email}</p>}
+        <label htmlFor="password">Password</label>
         <input
           placeholder="Password"
           id="password"
@@ -144,7 +145,7 @@ export const SignupPage = () => {
         />
 
         {errors.password.length > 0 && (
-          <ul>
+          <ul className="password-err">
             {errors.password.map((error, index) => (
               <li key={index}>{error}</li>
             ))}

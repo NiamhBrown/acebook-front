@@ -51,7 +51,7 @@ export const FriendsPage = () => {
     return (
         <>
             <Navbar/>
-            <h1>My Friends</h1>
+            <h2>My Friends</h2>
             <div className="friends-container">
             {results.length > 0 ? (
                 results.map((friend) => (
