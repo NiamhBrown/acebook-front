@@ -78,7 +78,7 @@ export const Profile = () => {
       <Navbar />
       <main className="profile-main">
         <div className="profile-header">
-          <ProfilePicture userId ={userId}/>
+          <ProfilePicture userId={userId} />
           <div className="modal">
             <button onClick={openModal}>Edit Profile</button>
             <Modal
@@ -103,16 +103,24 @@ export const Profile = () => {
           <p>Gender: {signedInUser.gender}</p>
           <p>Location: {signedInUser.location}</p>
         </div>
-        <h2 className="post-heading">Posts</h2>
+
         <div className="profile-container" role="profile">
-          {posts.map((post) => (
-            <Post
-              key={post._id}
-              post={post}
-              token={token}
-              user={signedInUser}
-            />
-          ))}
+          <h2>Posts</h2>
+          {posts.length > 0 ? (
+            <>
+              {posts.map((post) => (
+                <Post
+                  key={post._id}
+                  post={post}
+                  token={token}
+                  user={signedInUser}
+                />
+              ))}
+            </>
+          ) : (
+            <p className="none-found-msg">No posts found. </p>
+          )}
+
           <FriendsPage />
         </div>
       </main>
