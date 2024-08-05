@@ -100,8 +100,6 @@ export const Profile = () => {
           <h1>
             {signedInUser.forename} {signedInUser.surname}
           </h1>
-          <p>Gender: {signedInUser.gender}</p>
-          <p>Location: {signedInUser.location}</p>
         </div>
         <h2 className="post-heading">Posts</h2>
         <div className="profile-container" role="profile">
