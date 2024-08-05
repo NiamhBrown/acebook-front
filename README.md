@@ -1,5 +1,4 @@
 
-![Acebook Screenshot]()
 
 ## Table of Contents
 
@@ -26,6 +25,11 @@
 - **Interactive Features**: Like and comment on posts.
 - **Edit user profile**: Update your user information.
 
+### Screenshots
+![Feed page](/screenshots/feed-page.png)
+![Search box](/screenshots/search.png)
+![Profile page](/screenshots/profile-page.png)
+![Friend request](/screenshots/accept:deny.png)
 
 ## Built With
 
