@@ -78,15 +78,20 @@ export const Profile = () => {
       <Navbar />
       <main className="profile-main">
         <div className="profile-header">
-          <ProfilePicture userId ={userId}/>
+          <ProfilePicture userId={userId} />
           <div className="modal">
-            <button onClick={openModal}>Edit Profile</button>
+            <button className="edit-profile-btn" onClick={openModal}>
+              Edit Profile
+            </button>
             <Modal
               isOpen={modalIsOpen}
               onRequestClose={closeModal}
               contentLabel="Edit Profile"
+              // style={{content: {
+              //   background: 'blue',
+              // }}}
             >
-              <h2>Edit Profile</h2>
+
               <EditProfileForm
                 user={signedInUser}
                 onSave={handleSave}
@@ -97,20 +102,30 @@ export const Profile = () => {
             </Modal>
           </div>
 
-          <h1>
+          <h1 className="profile-name">
             {signedInUser.forename} {signedInUser.surname}
           </h1>
         </div>
-        <h2 className="post-heading">Posts</h2>
-        <div className="profile-container" role="profile">
-          {posts.map((post) => (
-            <Post
-              key={post._id}
-              post={post}
-              token={token}
-              user={signedInUser}
-            />
-          ))}
+
+        <div className="profile-container">
+          <h2>
+            Posts <span className="number">({posts.length})</span>
+          </h2>
+          {posts.length > 0 ? (
+            <>
+              {posts.map((post) => (
+                <Post
+                  key={post._id}
+                  post={post}
+                  token={token}
+                  user={signedInUser}
+                />
+              ))}
+            </>
+          ) : (
+            <p className="none-found-msg">No posts found. </p>
+          )}
+
           <FriendsPage />
         </div>
       </main>

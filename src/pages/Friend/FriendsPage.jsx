@@ -49,21 +49,23 @@ export const FriendsPage = () => {
     }
 
     return (
-        <>
-            <Navbar/>
-            <h2>My Friends</h2>
-            <div className="friends-container">
-            {results.length > 0 ? (
-                results.map((friend) => (
-                    <div key={friend._id}>
-                        <Friend friend={friend} />
-                    </div>
-                ))
-            ) : (
-                <p>No friends found.</p>
-            )}
-            </div>
-        </>
+      <>
+        <Navbar />
+        <h2>
+          Friends <span className="number">({results.length})</span>
+        </h2>
+        <div className="friends-container">
+          {results.length > 0 ? (
+            results.map((friend) => (
+              <div key={friend._id}>
+                <Friend friend={friend} />
+              </div>
+            ))
+          ) : (
+            <p>No friends found.</p>
+          )}
+        </div>
+      </>
     );
 };
 
