@@ -25,6 +25,7 @@ const EditProfileForm = ({ user, onSave, onClose, token, onUpload }) => {
 
   return (
     <>
+      <h2>Edit Profile</h2>
       <ProfilePictureUpload token={token} onUpload={onUpload} />
       <form onSubmit={handleSubmit}>
         <label>
@@ -77,8 +78,10 @@ const EditProfileForm = ({ user, onSave, onClose, token, onUpload }) => {
           />
         </label>
         <br />
-        <button type="submit">Save</button>
-        <button type="button" onClick={onClose}>
+        <button className="save-cancel-btn" type="submit">
+          Save
+        </button>
+        <button className="save-cancel-btn" type="button" onClick={onClose}>
           Cancel
         </button>
       </form>

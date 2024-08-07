@@ -130,14 +130,14 @@ textarea {
   padding: 30px;
 }
 .profile-header img {
-  width: 250px; 
-  height: 250px; 
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #ccc; 
+  border: 2px solid #ccc;
 }
 
-.edit-profile-btn{
+.edit-profile-btn {
   background-color: #007bff;
   color: white;
   border: none;
@@ -145,16 +145,34 @@ textarea {
   margin: 20px;
   border-radius: 4px;
   cursor: pointer;
-
 }
 
 .profile-name {
-    margin: 0px;
+  margin: 0px;
+}
+
+/* edit profile modal */
+.ReactModal__Content,
+.ReactModal__Content--after-open {
+  height: 400px;
+  width: 500px;
+  margin: auto;
+}
+
+
+.save-cancel-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin: 20px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 /* friend's page */
 .single-friend img {
   width: 150px;
-  height: 150px; 
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ccc; /* Optional: Add a border */
@@ -168,7 +186,7 @@ textarea {
   margin: 20px;
 }
 .number {
-    font-size: 15px;
+  font-size: 15px;
 }
 /* Friends page */
 .friends-container {

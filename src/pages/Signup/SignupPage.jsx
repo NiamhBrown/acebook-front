@@ -134,7 +134,7 @@ export const SignupPage = () => {
           autoComplete="off"
           onChange={handleInputChange(setEmail)}
         />
-        {errors.email && <p className="email-err">{errors.email}</p>}
+        {errors.email && <p className="field-err ">{errors.email}</p>}
         <label htmlFor="password">Password</label>
         <input
           placeholder="Password"

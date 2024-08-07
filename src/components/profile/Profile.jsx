@@ -87,8 +87,11 @@ export const Profile = () => {
               isOpen={modalIsOpen}
               onRequestClose={closeModal}
               contentLabel="Edit Profile"
+              // style={{content: {
+              //   background: 'blue',
+              // }}}
             >
-              <h2>Edit Profile</h2>
+
               <EditProfileForm
                 user={signedInUser}
                 onSave={handleSave}
